@@ -15,18 +15,30 @@ class Hand:
         self.sort_hand()
     
     def remove_card(self, id):
+        tmp = None
         for i in range(len(self.cards)):
             if self.cardIds[i] == id:
                 tmp = self.cards.pop(i)
                 self.cardIds.pop(i)
-                return tmp
+                break
+        
         self.sort_hand()
-    
+        if tmp == None:
+            return "INVALID"
+        else:
+            return tmp
+
     def return_card(self, id):
+        tmp = None
         for i in range(len(self.cards)):
             if self.cardIds[i] == id:
-                return self.cards[i]
-        self.sort_hand()
+                tmp = self.cards[i]
+                break
+        if tmp == None:
+            return "INVALID"
+        else:
+            return tmp
+        
                 
     @property
     def value(self):
@@ -69,8 +81,9 @@ class Hand:
                 cardindex += 1
             else:
                 cindex += 1
+        ret = []
         if len(combos) != 0:
-            ret = []
+            
             for combo in combos:
                 if len(combo) > 2:
                     ret.append(combo)

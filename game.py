@@ -55,24 +55,45 @@ class Game:
                         print(currPlayer.possible_combos())
                         if self.turn > 2:
                             inp = input("Put on table: ")
-                            if inp == "y":
-
-                                inp = input("Card id to put on table: ")
-                                while inp != "s":
-                                    toput = []
-                                    self.tabledeck.add_card(currPlayer.remove_card(int(inp)))
-                                    print(currPlayer)
+                            while inp != "q":
+                                if inp == "q":
+                                    break
+                                inp = ""
+                                toput = []
+                                toput_cards = []
+                                while inp != "s":                                    
+                                    print(toput_cards)
                                     inp = input("Card id to add card to flush (s do): ")
-                                    toput.append(currPlayer.return_card(int(inp)))
-                                    if self.valid_flush(toput):
-                                        for card in toput:
-                                            self.table.put_out(currPlayer, card)
-                                        print(currPlayer)
+                                    if inp == "s":
                                         break
+                                    inp = int(inp)
+                                    cardt = currPlayer.return_card(inp)
+                                    if cardt == "INVALID":
+                                        print("Invalid card id")
+                                    else:
+                                        toput.append(inp)
+                                        toput_cards.append(cardt)
+
+                                if self.valid_flush(toput_cards):
+                                    cardy = []
+                                    for card in toput:
+                                        cardy.append(currPlayer.remove_card(card))
+                                    self.table.put_out(currPlayer, cardy)
+                                else:
+                                    print("Invalid flush")
+                                inp = input("Put on table: ")
+
                         if self.autoplay and self.turn < self.autoplaytoturn:
-                            self.tabledeck.add_card(currPlayer.remove_card(random.choice(currPlayer.give_cardIds)))
+                            self.tabledeck.add_card(currPlayer.remove_card(random.choice(currPlayer.give_cardIds())))
                         else:
-                            self.tabledeck.add_card(currPlayer.remove_card(int(input("Card id to throw: "))))
+                            while True:
+                                cardt = currPlayer.remove_card(int(input("Card id to throw: ")))
+                                if cardt == "INVALID":
+                                    print("Invalid card id")
+                                else:
+                                    self.tabledeck.add_card(cardt)
+                                    break
+                        
                         print(currPlayer)
                         
                         
