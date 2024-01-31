@@ -30,9 +30,8 @@ class Hand:
 
     def return_card(self, id):
         tmp = None
-        for i in range(len(self.cards)):
+        for i, tmp in enumerate(self.cards):
             if self.cardIds[i] == id:
-                tmp = self.cards[i]
                 break
         if tmp == None:
             return "INVALID"
@@ -97,8 +96,8 @@ class Hand:
 
     def __repr__(self):
         ret = ""
-        for card in range(len(self.cards)):
-            ret += f"{self.cards[card]}({self.cardIds[card]}) "
+        for card, item in enumerate(self.cards):
+            ret += f"{item}({self.cardIds[card]}) "
 
 
         return f"{self.name}: {ret} Value: {self.value}"
