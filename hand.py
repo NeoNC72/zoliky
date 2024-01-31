@@ -6,14 +6,14 @@ class Hand:
         self.cards : list[card.Card] = []
         self.cardIds = []
         self.currentId = 0
-    
+
     def add_card(self, card:card.Card):
         self.cards.append(card)
         self.cardIds.append(self.currentId)
         card.idOnHand = self.currentId
         self.currentId += 1
         self.sort_hand()
-    
+
     def remove_card(self, id):
         tmp = None
         for i in range(len(self.cards)):
@@ -21,7 +21,7 @@ class Hand:
                 tmp = self.cards.pop(i)
                 self.cardIds.pop(i)
                 break
-        
+
         self.sort_hand()
         if tmp is None:
             return "INVALID"
@@ -37,8 +37,8 @@ class Hand:
             return "INVALID"
         else:
             return tmp
-        
-                
+
+
     @property
     def value(self):
         ret = 0
@@ -75,23 +75,23 @@ class Hand:
                     cardindex += 1
                 else:
                     break
-            
+
             if len(combos) == startlen:
                 cardindex += 1
             else:
                 cindex += 1
         ret = []
         if len(combos) != 0:
-            
+
             for combo in combos:
                 if len(combo) > 2:
                     ret.append(combo)
 
-            
-        return ret
-            
 
-    
+        return ret
+
+
+
 
 
     def __repr__(self):

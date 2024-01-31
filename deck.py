@@ -14,20 +14,19 @@ class Deck:
                         self.cards.append(card.Card(rank, suit, i))
                         i += 1
                 i = 0
-                
-        
+
+
     def shuffle(self):
         random.shuffle(self.cards)
 
     def take_card(self):
         return self.cards.pop()
-    
+
     def add_card(self, card:card.Card):
         self.cards.append(card)
-    
+
     def card_on_top(self):
         return self.cards[-1]
 
     def __repr__(self):
         return f"{self.cards} Deck size: {len(self.cards)}\n"
-    

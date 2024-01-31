@@ -10,7 +10,7 @@ class Card:
             "zaludy": "Za",
             "kule": "K",
             "zolik": "Zo"
-            
+
 
 
         }
@@ -27,22 +27,22 @@ class Card:
 
     def __repr__(self):
         return f"{self._nameTable[self._suit]}{self._rank}"
-    
+
     @property
     def rank(self):
         if type(self._rank) == int:
             return self._rank
         else:
             return self.valueTable[self._rank]
-    
+
     @property
     def suit(self):
         return self._suit
-    
+
     @property
     def idOnHand(self):
         return self._idOnHand
-    
+
     @property
     def value(self):
         if self._rank == "A":
@@ -51,11 +51,11 @@ class Card:
             return 10
         else:
             return int(self._rank)
-    
+
     @property
     def cardOfJoker(self):
         return self._cardOfJoker
-    
+
 
     @cardOfJoker.setter
     def cardOfJoker(self, card):
