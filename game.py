@@ -14,7 +14,7 @@ class Game:
         self.onTurn = 0
         self.autoplay = autoplay
         self.autoplaytoturn = autoplaytoturn
-    
+
     def deal(self):
         fixed = [card.Card(2, "zeleny", 0), card.Card(3, "zeleny", 1), card.Card(4, "zeleny", 2), card.Card(4, "zeleny", 2), card.Card(5, "zeleny", 3), card.Card(6, "zeleny", 4)]
         for _ in range(7):
@@ -26,7 +26,7 @@ class Game:
                 else:    
                     player.add_card(self.deck.take_card())
                     player.add_card(self.deck.take_card())
-        
+
         #self.players[0].add_card(self.deck.take_card())
 
     def play(self):
@@ -93,10 +93,10 @@ class Game:
                                 else:
                                     self.tabledeck.add_card(cardt)
                                     break
-                        
+
                         print(currPlayer)
-                        
-                        
+
+
                         self.subturn += 1
                         if self.subturn == self.playercount:
                             self.turn += 1
@@ -105,15 +105,15 @@ class Game:
                         else:
                             self.onTurn += 1
                         break
-                            
+
                     elif play == "p":
                         print(currPlayer)
-                    
+
                     elif play == "t":
                         print(self.table)
-                    
-    
-            
+
+
+
     def valid_flush(self, cards):
         if len(cards) < 3:
             return False
