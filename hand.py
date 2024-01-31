@@ -23,7 +23,7 @@ class Hand:
                 break
         
         self.sort_hand()
-        if tmp == None:
+        if tmp is None:
             return "INVALID"
         else:
             return tmp
@@ -33,7 +33,7 @@ class Hand:
         for i, tmp in enumerate(self.cards):
             if self.cardIds[i] == id:
                 break
-        if tmp == None:
+        if tmp is None:
             return "INVALID"
         else:
             return tmp
